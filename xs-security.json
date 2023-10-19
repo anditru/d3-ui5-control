@@ -1,5 +1,7 @@
 {
+  "xsappname": "d3-custom-control",
+  "tenant-mode": "dedicated",
+  "description": "",
   "scopes": [],
-  "attributes": [],
   "role-templates": []
 }

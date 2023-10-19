@@ -1,50 +1,164 @@
-_schema-version: '3.1'
+_schema-version: "3.1"
 ID: d3-custom-control
+description: A simple CAP project.
 version: 1.0.0
-description: "A simple CAP project."
+
 parameters:
+  deploy_mode: html5-repo
   enable-parallel-deployments: true
+
 build-parameters:
   before-all:
-    - builder: custom
-      commands:
-        - npx cds build --production
-modules:
-  - name: d3-custom-control-srv
-    type: nodejs
-    path: gen/srv
-    parameters:
-      buildpack: nodejs_buildpack
-    build-parameters:
-      builder: npm
-    provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
-        properties:
-          srv-url: ${default-url}
-    requires:
-      - name: d3-custom-control-auth
-      - name: d3-custom-control-db
+  - builder: custom
+    commands:
+    - npx cds build --production
 
-  - name: d3-custom-control-db-deployer
-    type: hdb
-    path: gen/db
+modules:
+# ---------------------------------------------------------
+- name: d3-custom-control-srv
+# ---------------------------------------------------------
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: d3-custom-control-auth
+  - name: d3-custom-control-db
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm
+
+# ---------------------------------------------------------
+- name: d3-custom-control-db-deployer
+# ---------------------------------------------------------
+  type: hdb
+  path: gen/db
+  requires:
+  - name: d3-custom-control-db
+  parameters:
+    buildpack: nodejs_buildpack
+
+# ---------------------------------------------------------
+- name: d3-custom-control-destination-content
+# ---------------------------------------------------------
+  type: com.sap.application.content
+  requires:
+  - name: d3-custom-control-destination-service
     parameters:
-      buildpack: nodejs_buildpack
+      content-target: true
+  - name: d3-custom-control_html_repo_host
+    parameters:
+      service-key:
+        name: d3-custom-control_html_repo_host-key
+  - name: d3-custom-control-auth
+    parameters:
+      service-key:
+        name: d3-custom-control-auth-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: d3_ui5_control_d3_custom_control_html_repo_host
+          ServiceInstanceName: d3-custom-control-html5-app-host-service
+          ServiceKeyName: d3-custom-control_html_repo_host-key
+          sap.cloud.service: d3-ui5-control
+        - Authentication: OAuth2UserTokenExchange
+          Name: d3_ui5_control_d3_custom_control_auth
+          ServiceKeyName: d3-custom-control-auth-key
+          sap.cloud.service: d3-ui5-control
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+
+# ---------------------------------------------------------
+- name: d3-custom-control-app-content
+# ---------------------------------------------------------
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: d3-custom-control_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
     requires:
-      - name: d3-custom-control-db
+    - artifacts:
+      - aibuzzwords.zip
+      name: aibuzzwords
+      target-path: resources/
+
+# ---------------------------------------------------------
+- name: aibuzzwords
+# ---------------------------------------------------------
+  type: html5
+  path: app/aibuzzwords
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
 
 resources:
-  - name: d3-custom-control-auth
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: xsuaa
-      service-plan: application
-      path: ./xs-security.json
-      config:
-        xsappname: d3-custom-control-${org}-${space}
-        tenant-mode: dedicated
-  - name: d3-custom-control-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
+# ---------------------------------------------------------
+- name: d3-custom-control-auth
+# ---------------------------------------------------------
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: d3-custom-control-${org}-${space}
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+
+# ---------------------------------------------------------
+- name: d3-custom-control-db
+# ---------------------------------------------------------
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+
+# ---------------------------------------------------------
+- name: d3-custom-control-destination-service
+# ---------------------------------------------------------
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: d3-custom-control-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: d3-custom-control-destination-service
+    service-plan: lite
+  requires:
+  - name: srv-api
+
+# ---------------------------------------------------------
+- name: d3-custom-control_html_repo_host
+# ---------------------------------------------------------
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: d3-custom-control-html5-app-host-service
+    service-plan: app-host

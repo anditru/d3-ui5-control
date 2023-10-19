@@ -1,0 +1,1 @@
+using BuzzwordsService as service from '../../srv/buzzwords-service';
