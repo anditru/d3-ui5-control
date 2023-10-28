@@ -134,6 +134,6 @@
     },
     "sap.cloud": {
         "public": true,
-        "service": "d3-ui5-control"
+        "service": "d3ui5control"
     }
 }

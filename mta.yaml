@@ -64,11 +64,11 @@ modules:
         - Name: d3_ui5_control_d3_custom_control_html_repo_host
           ServiceInstanceName: d3-custom-control-html5-app-host-service
           ServiceKeyName: d3-custom-control_html_repo_host-key
-          sap.cloud.service: d3-ui5-control
+          sap.cloud.service: d3ui5control
         - Authentication: OAuth2UserTokenExchange
           Name: d3_ui5_control_d3_custom_control_auth
           ServiceKeyName: d3-custom-control-auth-key
-          sap.cloud.service: d3-ui5-control
+          sap.cloud.service: d3ui5control
         existing_destinations_policy: ignore
   build-parameters:
     no-source: true
