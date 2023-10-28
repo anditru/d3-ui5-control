@@ -2,7 +2,7 @@ sap.ui.define([
 	"sap/ui/core/Control",
     "sap/ui/core/ResizeHandler",
     "sap/ui/core/theming/Parameters",
-    "d3-cloud"
+    "../resources/d3-cloud"
 ], function(Control, ResizeHandler, ThemingParameters, cloud) {
 	"use strict";
 

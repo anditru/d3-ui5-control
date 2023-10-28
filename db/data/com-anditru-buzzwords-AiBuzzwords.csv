@@ -1,26 +1,26 @@
-text;weight
-Machine Learning;1
-Artificial Intelligence;2
-Deep Learning;3
-Neural Networks;4
-Natural Language Processing;5
-Computer Vision;6
-Big Data;7
-Data Science;8
-Reinforcement Learning;9
-Automation;10
-Chatbots;11
-Internet of Things;12
-Robotics;13
-Cognitive Computing;14
-Predictive Analytics;15
-Virtual Reality;16
-Augmented Reality;17
-Algorithm;18
-Autonomous;19
-Blockchain;20
-Cloud Computing;21
-Cybersecurity;22
-Ethics in AI;23
-Explainable AI;24
-Quantum Computing;25
+ID;text;weight
+be2d3329-f50d-4585-87ae-55f432d6578d;Machine Learning;1
+64539e05-363f-482d-9969-b0d8c051a9b5;Artificial Intelligence;2
+737efa55-6c42-40f9-b777-789ab045f559;Deep Learning;3
+00350c1e-5c32-47f6-bc64-1a0f2c60bbf8;Neural Networks;4
+f834b15c-be66-47ca-88a7-cb0c828ba303;Natural Language Processing;5
+fe6ccdda-1603-409c-851e-f1fc8418c987;Computer Vision;6
+f510a089-72a1-4d45-be3a-69dae2c4032d;Big Data;7
+44d24292-3aef-4d2a-8826-72ac6e4069a5;Data Science;8
+3a178004-7c27-4699-a994-50d010847445;Reinforcement Learning;9
+7e007102-5093-4ba1-a6aa-07eefa5ec1ce;Automation;10
+4369d5ce-a53c-4929-961b-295f71d8c77c;Chatbots;11
+898791ad-35c6-4318-a4e2-1c0709214f2b;Internet of Things;12
+d0bbd240-f9cd-4f3e-a297-9b7eee754519;Robotics;13
+d713974b-dc5e-4c70-8b5b-a83b5546c21e;Cognitive Computing;14
+2263e74f-8f73-4b82-ac6c-20dd6956d73e;Predictive Analytics;15
+cc3e0b72-0e81-495d-8a17-de2ffeae86b8;Virtual Reality;16
+d1800166-c91e-43f7-aa8d-fd4a9439469f;Augmented Reality;17
+99110224-f2d2-43ee-8db0-784a3160b63a;Algorithm;18
+812ec088-10db-4a74-84b4-afcfa9462a10;Autonomous;19
+e09be2ce-e082-4ccf-9963-755d62ad1c5b;Blockchain;20
+5ec61d41-e191-4d0e-89c8-1c02bbb2128d;Cloud Computing;21
+15f86a24-8a42-45d0-9d36-c2bbeae297fd;Cybersecurity;22
+e32d0dae-2f3d-41af-a61a-5a5c3a341ab8;Ethics in AI;23
+6f6f113d-35af-4455-9a0b-ab18a28f8a87;Explainable AI;24
+f015abab-df78-45fb-88b3-1862778ea919;Quantum Computing;25

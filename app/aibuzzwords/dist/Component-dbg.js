@@ -1,6 +1,6 @@
 sap.ui.loader.config({
 	paths: {
-		"d3-cloud": "resources/d3-cloud"
+		"d3-cloud": "./local-resources/d3-cloud"
 	}
 });
 

@@ -1,2 +1,2 @@
-sap.ui.loader.config({paths:{"d3-cloud":"resources/d3-cloud"}});sap.ui.define(["sap/ui/core/UIComponent","aibuzzwords/model/models"],function(e,i){"use strict";return e.extend("aibuzzwords.Component",{metadata:{manifest:"json"},init:function(){e.prototype.init.apply(this,arguments);this.getRouter().initialize();this.setModel(i.createDeviceModel(),"device")}})});
+sap.ui.loader.config({paths:{"d3-cloud":"./local-resources/d3-cloud"}});sap.ui.define(["sap/ui/core/UIComponent","aibuzzwords/model/models"],function(e,i){"use strict";return e.extend("aibuzzwords.Component",{metadata:{manifest:"json"},init:function(){e.prototype.init.apply(this,arguments);this.getRouter().initialize();this.setModel(i.createDeviceModel(),"device")}})});
 //# sourceMappingURL=Component.js.map

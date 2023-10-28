@@ -67,6 +67,7 @@ modules:
           sap.cloud.service: d3ui5control
         - Authentication: OAuth2UserTokenExchange
           Name: d3_ui5_control_d3_custom_control_auth
+          ServiceInstanceName: d3-custom-control-auth
           ServiceKeyName: d3-custom-control-auth-key
           sap.cloud.service: d3ui5control
         existing_destinations_policy: ignore

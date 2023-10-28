@@ -1,7 +1,7 @@
 //@ui5-bundle aibuzzwords/Component-preload.js
 sap.ui.require.preload({
 	"aibuzzwords/Component.js":function(){
-sap.ui.loader.config({paths:{"d3-cloud":"resources/d3-cloud"}});sap.ui.define(["sap/ui/core/UIComponent","aibuzzwords/model/models"],function(e,i){"use strict";return e.extend("aibuzzwords.Component",{metadata:{manifest:"json"},init:function(){e.prototype.init.apply(this,arguments);this.getRouter().initialize();this.setModel(i.createDeviceModel(),"device")}})});
+sap.ui.loader.config({paths:{"d3-cloud":"./local-resources/d3-cloud"}});sap.ui.define(["sap/ui/core/UIComponent","aibuzzwords/model/models"],function(e,i){"use strict";return e.extend("aibuzzwords.Component",{metadata:{manifest:"json"},init:function(){e.prototype.init.apply(this,arguments);this.getRouter().initialize();this.setModel(i.createDeviceModel(),"device")}})});
 },
 	"aibuzzwords/control/Word.js":function(){
 sap.ui.define(["sap/ui/core/Control"],function(t){"use strict";return t.extend("aibuzzwords.control.Word",{metadata:{properties:{text:{type:"string",defaultValue:"text"},weight:{type:"string",defaultValue:"weight"},color:{type:"sap.ui.core.CSSColor"},fontSize:{type:"int"},font:{type:"string"},xCoordinate:{type:"int"},yCoordinate:{type:"int"},rotation:{type:"int"}}},renderer:{apiVersion:2,render:function(t,e){t.openStart("text",e);t.attr("text-anchor","middle");t.attr("transform",`translate(${[e.getXCoordinate(),e.getYCoordinate()]})rotate(${e.getRotation()})`);t.style("font-size",e.getFontSize()+"px");t.style("font-family",e.getFont()),t.style("fill",e.getColor());t.openEnd();t.text(e.getText());t.close("text")}}})});
