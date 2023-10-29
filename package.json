@@ -1,7 +1,7 @@
 {
     "name": "d3-custom-control",
     "version": "1.0.0",
-    "description": "A simple CAP project.",
+    "description": "An application to view AI buzzwords.",
     "repository": "https://github.com/anditru/d3-ui5-control.git",
     "license": "UNLICENSED",
     "private": true,

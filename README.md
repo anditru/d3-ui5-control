@@ -1,25 +1,30 @@
-# Getting Started
+# Custom UI5 Control using d3
 
-Welcome to your new project.
+End-to-end sample for a custom UI5 control based on d3-cloud from development to deployment on SAP BTP.
 
-It contains these folders and files, following our recommended project layout:
+It contains these folders and files:
 
 File or Folder | Purpose
 ---------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
+`app/` | content for UI frontend
+`db/` | domain models and data
+`srv/` | service model
 `package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+`README.md` | this getting started guide
 
+## How to use
+Frist install the dependencies:
+```bash
+npm i && npm i --prefix app/aibuzzwords
+```
 
-## Next Steps
+### Run locally
+```bash
+cds watch
+```
 
-- Open a new terminal and run `cds watch` 
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
-
-
-## Learn More
-
-Learn more at https://cap.cloud.sap/docs/get-started/.
+### Deploy
+Make sure you are logged in to you desired BTP Subaccount using `cf login`. Then run
+```bash
+npm run build && npm run deploy
+```

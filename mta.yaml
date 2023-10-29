@@ -1,6 +1,6 @@
 _schema-version: "3.1"
 ID: d3-custom-control
-description: A simple CAP project.
+description: An application to view AI buzzwords.
 version: 1.0.0
 
 parameters:
