@@ -16,6 +16,7 @@
         "@cap-js/sqlite": "^1",
         "@sap/cds-dk": "^7",
         "@sap/ux-specification": "^1.108.16",
+        "cds-plugin-ui5": "^0.7.0",
         "rimraf": "^3.0.2"
     },
     "scripts": {
@@ -30,6 +31,13 @@
             "[production]": {
                 "auth": "xsuaa",
                 "db": "hana"
+            }
+        },
+        "cds-plugin-ui5": {
+            "modules": {
+                "aibuzzwords": {
+                    "configFile": "ui5.yaml"
+                }
             }
         }
     }
