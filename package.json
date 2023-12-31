@@ -2,7 +2,7 @@
     "name": "d3-custom-control",
     "version": "1.0.0",
     "description": "An application to view AI buzzwords.",
-    "repository": "https://github.com/anditru/d3-ui5-control.git",
+    "repository": "https://github.com/andretrump/d3-ui5-control.git",
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {
@@ -21,13 +21,22 @@
     },
     "scripts": {
         "start": "cds-serve",
-        "watch-aibuzzwords": "cds watch --open aibuzzwords/webapp/index.html?sap-ui-xx-viewCache=false",
         "undeploy": "cf undeploy d3-custom-control --delete-services --delete-service-keys --delete-service-brokers",
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
         "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
     },
     "cds": {
         "requires": {
+            "[development]": {
+                "auth": {
+                    "kind": "mocked",
+                    "users": {
+                        "alice": {
+                            "password": "123"
+                        }
+                    }
+                }
+            },
             "[production]": {
                 "auth": "xsuaa",
                 "db": "hana"

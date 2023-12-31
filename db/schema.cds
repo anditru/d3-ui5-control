@@ -1,6 +1,6 @@
 using { cuid } from '@sap/cds/common';
 
-namespace com.anditru.buzzwords;
+namespace com.at.buzzwords;
 
 entity AiBuzzwords : cuid {
     text    : String;
